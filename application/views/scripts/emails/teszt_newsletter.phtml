@@ -1,0 +1,39 @@
+<html>
+    <head>
+	<title><?php echo $this->subject ?></title>
+	<?php echo $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8'); ?>
+    </head>
+    <body>
+	<table style="width: 800px; border: 1px solid aquamarine;" align="center">
+	    <tr>
+		<td><img src="http://szakdoga.tigers-sites.hu/resources/images/nl_header.png"></td>
+	    </tr>
+	    <tr>
+		<td>
+		    <h2 align="center">Kedves <?php echo $this->name ?></h2>
+		    <?php echo $this->intro ?>
+		</td>
+	    </tr>
+	    <?php
+
+		foreach ($this->data as $article) {
+
+	    ?>
+		    <tr>
+			<td style="padding-bottom: 10px;">
+			    <h3><a href="http://www.szakdoga.hu/cikk/<?php echo $article["id"] ?>"><?php echo $article["title"] ?></a></h3>
+			    <?php echo $article["lead"] ?><br>
+			    <a href="http://www.szakdoga.hu/cikk/<?php echo $article["id"] ?>">Tovább >></a>
+			</td>
+		    </tr>
+	    <?php
+
+		}
+
+	    ?>
+	    <tr>
+		<td style="padding-top: 20px;">Ezt a levelet azért kaptad, mert Te, vagy valaki más ezzel az e-mail címmel (<?php echo $this->mail ?>) regisztrált a Szakdoga.hu oldalon, és igényelte hírlevélszolgáltatásunkat.</td>
+	    </tr>
+	</table>
+    </body>
+</html>

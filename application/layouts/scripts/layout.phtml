@@ -1,0 +1,180 @@
+<?php
+
+    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+    $this->headTitle()->setSeparator(' - ');
+    $this->headTitle('Kockainfó.hu');
+    $this->headLink()->prependStylesheet($this->baseUrl().'/resources/css/fluid.css');
+    $this->headLink()->prependStylesheet($this->baseUrl().'/resources/css/reset.css');
+//    $this->headLink()->prependStylesheet($this->baseUrl().'/resources/css/class.css');
+//    $this->headLink()->prependStylesheet($this->baseUrl().'/resources/css/included.css');
+    $this->headScript()->appendFile('http://code.jquery.com/jquery-latest.js','text/javascript');
+    $this->headScript()->appendFile($this->baseUrl().'/resources/js/tiny_mce/tiny_mce.js','text/javascript');
+    $this->headScript()->appendFile($this->baseUrl().'/resources/js/tiny_mce/tiny_mce_init.js','text/javascript');
+
+    echo $this->doctype();
+?>
+<html>
+    <head>
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+            </script>
+        <![endif]-->
+        <?php
+
+            echo $this->headMeta();
+            echo $this->headTitle();
+            echo $this->headLink();
+            echo $this->headScript();
+
+        ?>
+    </head>
+
+    <body>
+        <header class="box_head">
+            
+            <!--<div id="logo">
+                <img src="/resources/images/tsp_logo.png">
+            </div>
+            <div id="menu">
+                Kezdőlap  |  Hírek  |  Érdekességek  |  Egyéb menü
+            </div>
+            <div class="clear">
+            </div>-->
+            <section id="logo">
+                <form action="/index/search" method="get" id="searchbox">
+                    <span style="color: #666;">Keresés</span><br>
+                    <input name="key"><br><input type="submit">
+                </form>
+            </section>
+            <nav id="topNav">
+                <ul>
+                    <li><a href="/" style="padding-top: 4px; padding-bottom: 4px;"><img src="<?php echo PORTAL_URL ?>/resources/images/home.png" border="0"></a></li>
+                    <li><a href="/index/katonai">Fotográfia</a>
+                        <ul>
+                            <li><a href="#" title="Sub Nav Link 2">Fényképezőgépek</a></li>
+                            <li><a href="#" title="Sub Nav Link 2">Tesztek</a></li>
+                            <li class="last"><a href="#" title="Sub Nav Link 3">Galériák</a></li>
+                        </ul>       
+                    </li>
+                    <li><a href="/index/polgari">Informatika</a>
+                        <ul>
+                            <li><a href="#" title="Sub Nav Link 1">Hardver</a></li>
+                            <li><a href="#" title="Sub Nav Link 2">Szoftver</a></li>
+                            <li class="last"><a href="#" title="Sub Nav Link 3">Tesztek</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/index/helikopter">Mobil eszközök</a>
+                        <ul>
+                            <li><a href="#" title="Sub Nav Link 1">Hardver</a></li>
+                            <li><a href="#" title="Sub Nav Link 2">Szoftver</a></li>
+                            <li class="last"><a href="#" title="Sub Nav Link 3">Tesztek</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/index/helikopter">Tutoriálok</a>
+                        <ul>
+                            <li><a href="#" title="Sub Nav Link 1">Photoshop</a></li>
+                            <li><a href="#" title="Sub Nav Link 2">HTML-CSS</a></li>
+                            <li><a href="#" title="Sub Nav Link 2">JavaScript / jQuery</a></li>
+                            <li><a href="#" title="Sub Nav Link 3">PHP</a></li>
+                            <li class="last"><a href="#" title="Sub Nav Link 3">Zend Framework</a></li>
+                        </ul>
+                    </li>
+                    <?php if (!Zend_Auth::getInstance()->hasIdentity()) { ?>
+                    <li class="last"><a href="/login">Belépés</a></li>
+                    <?php } else { if ($this->admin_user) { ?>
+                    <li><a href="/admin">Admin</a></li>
+                    <?php } elseif ($this->user || !$this->admin_user) { ?>
+                    <li><a href="/user">Adatmódosítás</a></li>
+                    <?php } ?>
+                    <li class="last"><a href="/login/logout">Kilépés</a></li>
+                    <?php } ?>
+                </ul>
+            </nav>
+        </header>
+        <container>
+                <div id="content">
+            <?php if ($this->admin_user) { ?>
+                    <div id="left">
+                <a class="menubutton leftmenu" href="/admin/new-article">Új cikk</a>
+                <a class="menubutton leftmenu" href="/admin/view-all-articles">Cikkek</a>
+                <a class="menubutton leftmenu" href="/admin/categories">Kategóriák</a>
+                <div class="clear">&nbsp;</div>
+                <a class="menubutton leftmenu" href="/admin/create-newsletter">Új hírlevél</a>
+                <a class="menubutton leftmenu" href="/admin/newsletters">Hírlevelek</a>
+                <a class="menubutton leftmenu" href="/admin/templates">Sablonok</a>
+                <a class="menubutton leftmenu" href="/admin/new-nl">Sablon feltöltése</a>
+                <a class="menubutton leftmenu" href="/admin/send-nl">Kiküldés</a>
+                    </div>
+            <div id="right" style="width: 778px;">
+            <?php } else { ?>
+                <div id="right">
+            <?php } ?>
+                    <?php echo $this->layout()->content; ?>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </container>
+        <footer>
+        </footer>
+        <script>
+			(function($){
+				
+				//cache nav
+				var nav = $("#topNav");
+				
+				//add indicator and hovers to submenu parents
+				nav.find("li").each(function() {
+					if ($(this).find("ul").length > 0) {
+						$("<span>").text("↓").appendTo($(this).children(":first"));
+
+						//show subnav on hover
+						$(this).mouseenter(function() {
+							$(this).find("ul").stop(true, true).slideDown();
+						});
+						
+						//hide submenus on exit
+						$(this).mouseleave(function() {
+							$(this).find("ul").stop(true, true).slideUp();
+						});
+					}
+				});
+			})(jQuery);
+		</script>
+    </body>
+</html>
+<!--nav{
+    background: #707070;
+    padding:0 5px;
+    border:1px solid #464646;
+    -moz-box-shadow:0 1px 1px #393939;
+    -webkit-box-shadow:0 1px 1px #393939;
+    box-shadow:0 1px 1px #393939;
+    display:block;
+    .column(12); 
+}
+nav ul li{
+    display:inline;
+}
+nav ul li a,
+nav ul li a:visited{
+    color:#000;
+    display:block;
+    float:left;
+    font-size:1em;
+    font-weight:bold;
+    margin:5px 2px;
+    padding:7px 10px 4px;
+    text-transform:uppercase;
+}
+nav ul li a:hover{
+    text-decoration:none;
+    background-color:#535353;
+    color:#fff;
+}
+nav, article, nav ul li a,figure{
+    /* Applying CSS3 rounded corners: */
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+}-->

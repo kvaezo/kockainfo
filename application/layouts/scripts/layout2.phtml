@@ -1,0 +1,99 @@
+<?php
+
+    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+    $this->headTitle()->setSeparator(' - ');
+    $this->headTitle('Hírportál');
+    $this->headLink()->prependStylesheet($this->baseUrl().'/resources/css/general.css');
+    $this->headLink()->prependStylesheet($this->baseUrl().'/resources/css/id.css');
+    $this->headLink()->prependStylesheet($this->baseUrl().'/resources/css/class.css');
+    $this->headLink()->prependStylesheet($this->baseUrl().'/resources/css/included.css');
+    $this->headScript()->appendFile('http://code.jquery.com/jquery-latest.js','text/javascript');
+    $this->headScript()->appendFile($this->baseUrl().'/resources/js/tiny_mce/tiny_mce.js','text/javascript');
+    $this->headScript()->appendFile($this->baseUrl().'/resources/js/tiny_mce/tiny_mce_init.js','text/javascript');
+
+    echo $this->doctype();
+?>
+<html>
+    <head>
+        <?php
+
+            echo $this->headMeta();
+            echo $this->headTitle();
+	    echo $this->headLink();
+	    echo $this->headScript();
+
+        ?>
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="header">
+		<form action="/index/search" method="get" id="searchbox">
+		    <span style="color: #666;">Keresés</span><br>
+		    <input name="key"><br><input type="submit">
+		</form>
+                <!--<div id="logo">
+                    <img src="/resources/images/tsp_logo.png">
+                </div>
+                <div id="menu">
+                    Kezdőlap  |  Hírek  |  Érdekességek  |  Egyéb menü
+                </div>
+                <div class="clear">
+                </div>-->
+            </div>
+	    <div id="menu">
+		<ul>
+		    <li><a class="menubutton" href="/">Kezdőlap</a></li>
+		</ul>
+		<ul>
+		    <li><a class="menubutton" href="/index/katonai">Katonai repülés</a></li>
+		</ul>
+		<ul>
+		    <li><a class="menubutton" href="/index/polgari">Polgári repülés</a></li>
+		</ul>
+		<ul>
+		    <li><a class="menubutton" href="/index/helikopter">Helikopterek</a></li>
+		</ul>
+		<ul>
+		    <?php if (!Zend_Auth::getInstance()->hasIdentity()) { ?>
+		    <li><a class="menubutton" href="/login">Belépés</a></li>
+		    <?php } else { if ($this->admin_user) { ?>
+		    <li><a class="menubutton" href="/admin">Admin</a></li>
+		</ul>
+		<ul>
+		    <?php } elseif ($this->user || !$this->admin_user) { ?>
+		    <li><a class="menubutton" href="/user">Adatmódosítás</a></li>
+		</ul>
+		<ul>
+		    <?php } ?>
+		    <li><a class="menubutton" href="/login/logout">Kilépés</a></li>
+		    <?php } ?>
+		</ul>
+            </div>
+            <div id="content">
+		<?php if ($this->admin_user) { ?>
+                <div id="left">
+		    <a class="menubutton leftmenu" href="/admin/new-article">Új cikk</a>
+		    <a class="menubutton leftmenu" href="/admin/view-all-articles">Cikkek</a>
+		    <a class="menubutton leftmenu" href="/admin/categories">Kategóriák</a>
+		    <div class="clear">&nbsp;</div>
+		    <a class="menubutton leftmenu" href="/admin/create-newsletter">Új hírlevél</a>
+		    <a class="menubutton leftmenu" href="/admin/newsletters">Hírlevelek</a>
+		    <a class="menubutton leftmenu" href="/admin/templates">Sablonok</a>
+		    <a class="menubutton leftmenu" href="/admin/new-nl">Sablon feltöltése</a>
+		    <a class="menubutton leftmenu" href="/admin/send-nl">Kiküldés</a>
+                </div>
+		<div id="right" style="width: 778px;">
+		<?php } else { ?>
+		    <div id="right">
+		<?php } ?>
+                    <?php echo $this->layout()->content; ?>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div id="footer">
+            </div>
+        </div>
+    </body>
+</html>

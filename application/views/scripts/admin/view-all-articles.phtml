@@ -1,0 +1,18 @@
+<?php
+
+echo "<table style='width: 100%; background: white;' border='1px' cellpadding='5px' cellspacing='0'>";
+
+foreach ($this->articles as $article) {
+    echo "<tr>";
+    echo "<td>".$article["id"]."</td>";
+    echo "<td><a href='/edit/".$article["id"]."'>".$article["title"]."</td>";
+    echo "<td>".$article->getUsername()."</td>";
+    $public = ($article["public"]) ? "igen" : "nem";
+    echo "<td>".$public."</td>";
+    echo "<td>".$article->getCategory()."</td>";
+    echo "</tr>";
+}
+
+echo "</table>";
+
+?>

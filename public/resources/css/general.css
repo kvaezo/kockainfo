@@ -1,0 +1,37 @@
+/* 
+    Document   : general
+    Created on : 2011.09.26., 21:47:30
+    Author     : koczorm
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body {
+    background: #ececec;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+dd, dt {
+    float: left;
+    text-align: left;
+}
+
+dd {
+    margin-bottom: 20px;
+}
+
+dt {
+    clear: both;
+    width: 150px;
+}
+
+h2 {
+    margin: 0;
+}

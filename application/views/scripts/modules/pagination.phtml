@@ -1,0 +1,47 @@
+<?php if ($this->pageCount): ?>
+    <div class="paginationControl" style="text-align: center;">
+	<?php if (isset($this->previous)): ?>
+	    <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
+		<< Első
+	    </a>&nbsp;
+	<?php else: ?>
+	    <span class="disabled"><< Első</span>
+	<?php endif; ?>
+
+	<?php if (isset($this->previous)): ?>
+	    <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+	    &lt;
+	    </a>
+	<?php else: ?>&nbsp;
+	    <span class="disabled">&lt;&nbsp;</span>
+	<?php endif; ?>
+
+	<?php foreach ($this->pagesInRange as $page): ?>
+	    <?php if ($page != $this->current): ?>
+		<a href="<?php echo $this->url(array('page' => $page)); ?>" style="text-decoration: none;">
+		    <?php echo $page; ?>
+		</a>
+	    <?php else: ?>
+		<?php echo "<span style='font-weight: bold; text-decoration: underline;'>".$page."</span>"; ?>
+	    <?php endif; ?>
+	<?php endforeach; ?>
+
+	<?php if (isset($this->next)): ?>
+	    &nbsp;
+	    <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+		&gt;
+	    </a>&nbsp;
+	<?php else: ?>
+	    <span class="disabled">&nbsp;&gt;&nbsp;</span>
+	<?php endif; ?>
+
+	<?php if (isset($this->next)): ?>
+	    <a href="<?php echo $this->url(array('page' => $this->last)); ?>">
+	    Utolsó >>
+	    </a>
+	<?php else: ?>
+	    <span class="disabled">Utolsó >></span>
+	<?php endif; ?>
+
+    </div>
+<?php endif; ?>

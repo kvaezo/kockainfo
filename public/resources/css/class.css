@@ -1,0 +1,86 @@
+/* 
+    Document   : class
+    Created on : 2011.09.26., 21:47:20
+    Author     : koczorm
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.clear {
+    clear: both;
+}
+
+.input_box {
+    padding: 3px;
+    border-radius: 3px;
+    border: 1px solid #990000;
+}
+
+.menubutton {
+    width: 140px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+    background: url(../images/menu.png) repeat-x;
+    display: block;
+    float: left;
+}
+
+.menubutton:hover {
+    width: 140px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: underline;
+    background: url(../images/menu_hover.png) repeat-x;
+    float: left;
+}
+
+.leftmenu {
+    width: 200px;
+    margin: 5px 0;
+}
+
+.leftmenu:hover {
+    width: 200px;
+    margin: 5px 0;
+}
+
+.box {
+    width: 467px;
+    border: 1px solid #bbb;
+    padding: 5px;
+    float: left;
+    margin: 0 5px 10px 5px;
+}
+
+.box_title {
+    font-size: 15px;
+}
+
+.box_name {
+    margin-bottom: 10px;
+    color: #990000;
+    text-decoration: underline;
+}
+
+.fresh {
+    border-color: #990000;
+}
+
+.input {
+    border: 1px solid #666;
+    width: 169px;
+}

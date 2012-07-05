@@ -1,0 +1,14 @@
+<?php
+$article = $this->article->toArray();
+
+echo "<div class='article'><div class='article_head'>";
+echo "<h2>".$article["title"]."</h2>";
+echo $this->article->getUsername()." / ".$article["create_date"]." / Kategória: ".$this->article->getCategory();
+echo "</div>";
+echo "<div class='article_content'>";
+echo $article["lead"];
+echo $article["article"];
+echo "</div>";
+echo "</div>";
+
+?>

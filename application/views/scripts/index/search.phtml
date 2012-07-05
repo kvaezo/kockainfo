@@ -1,0 +1,15 @@
+<h2 style="margin-bottom: 20px;">Keresési találatok a következő keresőszóra: <span style="font-weight: normal;"><?php echo $this->key ?></span></h2>
+<?php
+
+if ($this->paginator) {
+    foreach ($this->paginator as $article) {
+	Application_Model_DbTable_Articles::showArticleShort($article["id"]);
+    }
+
+    echo $this->paginationControl($this->paginator, 'Sliding', 'modules/pagination.phtml');
+}
+else {
+    echo $this->message;
+}
+
+?>

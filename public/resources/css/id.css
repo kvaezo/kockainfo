@@ -1,0 +1,124 @@
+/* 
+    Document   : id
+    Created on : 2011.09.26., 21:47:09
+    Author     : koczorm
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+#container {
+    width: 1000px;
+    margin: 0 auto 0 auto;
+    padding: 0;
+}
+
+#header {
+    width: 998px;
+    height: 100px;
+    background: white;
+    border-right: 1px aquamarine solid;
+    border-left: 1px aquamarine solid;
+    background: url("../images/header.png");
+    /*border-bottom: 1px solid #990000;*/
+}
+
+#searchbox {
+    margin-left: 600px;
+    padding-top: 15px;
+    text-align: center;
+    width: 200px;
+}
+
+#searchbox input {
+    margin-bottom: 5px;
+}
+
+#logo {
+    width: 200px;
+    height: 80px;
+    float: left;
+    padding: 10px 0 10px 20px;
+}
+
+#menu {
+    width: 958px;
+    height: 30px;
+    color: #cc0000;
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 16px;
+    padding: 0 20px 0 20px;
+    background: url("../images/menu.png");
+    border-right: 1px aquamarine solid;
+    border-left: 1px aquamarine solid;
+    float: left;
+}
+
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+#content {
+    width: 998px;
+    min-height: 300px;
+    padding: 0;
+    margin: 0;
+    background: #272727;
+    border-right: 1px aquamarine solid;
+    border-left: 1px aquamarine solid;
+}
+
+#left {
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    float: left;
+    background: #272727;
+/*    border-right: 1px aquamarine solid;*/
+    min-height: 400px;
+}
+
+#right {
+    width: 978px;
+    margin: 0;
+    padding: 10px;
+    float: left;
+    background: url("../images/content_bg.png") repeat-x white;
+    min-height: 400px;
+}
+
+#login_form {
+    text-align: center;
+}
+
+#reg_form {
+    text-align: center;
+}
+
+#footer {
+    width: 1000px;
+    height: 50px;
+    background: #272727;
+}
+
+#vazlat {
+    float: left;
+    margin-right: 30px;
+}
+
+#mentes {
+    float: left;
+}
+
+#articles, #template {
+    width: 500px;
+    height: 250px;
+}

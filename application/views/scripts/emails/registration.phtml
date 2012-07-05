@@ -1,0 +1,23 @@
+<html>
+    <head>
+	<?php echo $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8'); ?>
+    </head>
+    <body>
+	<table style="width: 800px; border: 1px solid aquamarine;" align="center">
+	    <tr>
+		<td><img src="http://szakdoga.tigers-sites.hu/resources/images/nl_header.png"></td>
+	    </tr>
+	    <tr>
+		<td>
+		    <h2 align="center">Sikeresen regisztráltál!</h2>
+		    Kedves <?php echo $this->nick ?>!<br><br>
+		    Sikeresen regisztráltad magad a Szakdoga.hu oldalon. Kérlek véglegesítsd a regisztrációdat az alábbi linkre kattintva:<br>
+		    <a href="http://szakdoga.hu/login/get-verified/code/<?php echo base64_encode($this->nick) ?>">http://szakdoga.hu/login/get-verified/code/<?php echo base64_encode($this->nick) ?></a>
+		</td>
+	    </tr>
+	    <tr>
+		<td style="padding-top: 20px;">Ezt a levelet azért kaptad, mert Te, vagy valaki más ezzel az e-mail címmel (<?php echo $this->mail ?>) indított regisztrációt a Szakdoga.hu oldalon.</td>
+	    </tr>
+	</table>
+    </body>
+</html>
