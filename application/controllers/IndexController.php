@@ -20,6 +20,10 @@ class IndexController extends Zend_Controller_Action
         if ($params["action"] == "search" && preg_match("/\?/", $_SERVER["REQUEST_URI"])) {
             $this->_helper->redirector("search", "index", null, array("key" => $params["key"]));
         }
+		
+		$this->view->headTitle("Kockainfó");
+		$this->view->headTitle()->setSeparator(' - ');
+		$this->view->menu_item = "menu1";
     }
 
     public function init()

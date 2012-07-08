@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>NOVA</title>
+		<?php echo $this->headTitle(); ?>
+        <?php echo $this->headMeta(); ?>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="<?php echo $this->baseUrl() ?>/resources/css/style.css" type="text/css" media="screen" />
@@ -117,8 +118,8 @@
 					<div class="wrapper">
 						<!-- Navigation -->
 						<ul id="nav" class="sf-menu">
-							<li class="current-menu-item"><a href="index.html">Home<span class="subheader">Welcome</span></a></li>
-							<li><a href="features.html">Features<span class="subheader">Awesome options</span></a>
+							<li<?php if ($this->menu_item == "home") echo ' class="current-menu-item"'; ?>><a href="index.html">Kezdőlap<span class="subheader" style="text-align:center; padding-bottom: 3px;"><img width="27px" src="<?php echo $this->baseUrl() ?>/resources/images/home.png"></span></a></li>
+							<li<?php if ($this->menu_item == "menu1") echo ' class="current-menu-item"'; ?>><a href="features.html">Features<span class="subheader">Awesome options</span></a>
 								<ul>
 									
 									<li><a href="features-columns.html"><span> Columns layout</span></a></li>
@@ -129,9 +130,9 @@
 									<li><a href="features-monobox.html"><span> Icons</span></a></li>
 								</ul>
 							</li>
-							<li><a href="blog.html">Blog<span class="subheader">Read our posts</span></a></li>
-							<li><a href="portfolio.html">Portfolio <span class="subheader">Showcase work</span></a></li>
-							<li><a href="gallery.html">Gallery<span class="subheader">Featured work</span></a>
+							<li<?php if ($this->menu_item == "menu2") echo ' class="current-menu-item"'; ?>><a href="blog.html">Blog<span class="subheader">Read our posts</span></a></li>
+							<li<?php if ($this->menu_item == "menu3") echo ' class="current-menu-item"'; ?>><a href="portfolio.html">Portfolio <span class="subheader">Showcase work</span></a></li>
+							<li<?php if ($this->menu_item == "menu4") echo ' class="current-menu-item"'; ?>><a href="gallery.html">Gallery<span class="subheader">Featured work</span></a>
 								<ul>
 									<li><a href="gallery.html"><span> Four columns</span></a></li>
 									<li><a href="gallery-3.html"><span> Three columns </span></a></li>
@@ -139,9 +140,10 @@
 									<li><a href="video-gallery.html"><span> Video gallery </span></a></li>
 								</ul>
 							</li>
-							<li><a href="contact.html">Contact<span class="subheader">Get in touch</span></a></li>
+							<li<?php if ($this->menu_item == "menu5") echo ' class="current-menu-item"'; ?>><a href="contact.html">Contact<span class="subheader">Get in touch</span></a></li>
 						</ul>
 						<!-- Navigation -->
+                        <?php //echo new Application_Form_Login(); ?>
 					</div>
 					<!-- wrapper-menu -->
 				</div>
